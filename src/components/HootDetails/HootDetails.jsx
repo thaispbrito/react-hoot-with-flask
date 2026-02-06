@@ -34,10 +34,10 @@ const HootDetails = (props) => {
                     <p>{hoot.category.toUpperCase()}</p>
                     <h1>{hoot.title}</h1>
                     <p>
-                        {`${hoot.author.username} posted on
+                        {`${hoot.author_username} posted on
                         ${new Date(hoot.createdAt).toLocaleDateString()}`}
                     </p>
-                    {hoot.author._id === user._id && (
+                    {hoot.hoot_author_id === user.id && (
                         <>
                             <Link to={`/hoots/${hootId}/edit`}>Edit</Link>
                             
@@ -56,10 +56,10 @@ const HootDetails = (props) => {
                 {!hoot.comments.length && <p>There are no comments.</p>}
 
                 {hoot.comments.map((comment) => (
-                    <article key={comment._id}>
+                    <article key={comment.id}>
                         <header>
                             <p>
-                                {`${comment.author.username} posted on
+                                {`${comment.comment_author_username} posted on
                                 ${new Date(comment.createdAt).toLocaleDateString()}`}
                             </p>
                         </header>

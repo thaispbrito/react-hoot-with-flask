@@ -36,14 +36,14 @@ const App = () => {
 
   const handleDeleteHoot = async (hootId) => {
     const deletedHoot = await hootService.deleteHoot(hootId);
-    // Filter state using deletedHoot._id:
-    setHoots(hoots.filter((hoot) => hoot._id !== deletedHoot._id));
+    // Filter state using deletedHoot.id:
+    setHoots(hoots.filter((hoot) => hoot.id !== deletedHoot.id));
     navigate('/hoots');
   };
 
   const handleUpdateHoot = async (hootId, hootFormData) => {
     const updatedHoot = await hootService.updateHoot(hootId, hootFormData);
-    setHoots(hoots.map((hoot) => (hootId === hoot._id ? updatedHoot : hoot)));
+    setHoots(hoots.map((hoot) => (hootId === updatedHoot.id ? updatedHoot : hoot)));
     navigate(`/hoots/${hootId}`);
   };
 
